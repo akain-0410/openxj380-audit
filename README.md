@@ -19,5 +19,3 @@
 - Issue [#12](https://github.com/xingji-studio/OpenXJ380/issues/12)（发布于 2026-08-01T21:48:56Z）Wayback 快照：https://web.archive.org/web/20260801215205/https://github.com/xingji-studio/OpenXJ380/issues/12
 - 官网"完全由我们自主开发"宣称页快照：https://web.archive.org/web/20260801215244/https://www.xingjisoft.com/os/xj380/
 - Issue 发布时正文原文（GitHub API 抓取）：[issue12_as_published.md](./issue12_as_published.md)
-
-以上快照均已验证包含关键内容（对方删除 Issue 或修改官网措辞后，此处证据仍可独立核验）。
