@@ -1,13 +1,3 @@
-# 议题存档（发布于 xingji-studio/OpenXJ380 的 Issue 备份；若原 Issue 被删除，以本文件为准）
-
----
-
-**标题（建议原样使用）：**
-
-License: `font/hankaku.bin` 与 MikanOS 字体逐字节一致（4096/4096），未声明来源且被标注 "XINGJI 保留所有权利"
-
-**正文（以下为可直接粘贴的 Issue 内容）：**
-
 ## 概述
 
 本仓库中存在与 [MikanOS](https://github.com/uchan-nos/mikanos)（[Apache-2.0](https://github.com/uchan-nos/mikanos/blob/master/LICENSE)，日本教材《ゼロからのOS自作入門》配套项目）逐字节一致的资产和高度同构的代码，但：
@@ -71,7 +61,3 @@ struct FrameBufferConfig {
 完整审计报告（含全仓库第三方占比统计、其他许可证合规问题、构建可复现性实测）见：https://github.com/akain-0410/openxj380-audit
 
 本 Issue 只陈述可复现事实，欢迎以证据回应。
-
-> 存档说明：本文件为上述 Issue 的原文备份，提交时间见本仓库 Git 历史。原 Issue 链接：https://github.com/xingji-studio/OpenXJ380/issues/12 （发布于 2026-08-01T21:48:56Z）
-> 第三方时间戳（Wayback Machine 快照）：https://web.archive.org/web/20260801215205/https://github.com/xingji-studio/OpenXJ380/issues/12
-> 发布时正文原文（经 GitHub API 抓取，防事后编辑争议）：[issue12_as_published.md](./issue12_as_published.md)
