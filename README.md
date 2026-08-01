@@ -13,3 +13,11 @@
 - 全部约 170 万行代码于 2026-08-01 单次 "first commit" 提交，无开发历史可查。
 
 审计不否认其真实工程量（约 10 万行第一方整合与子系统代码），审查对象是"完全自主研发"这一公开宣称与许可证合规性。报告附有全部证据的复现步骤，欢迎以证据反驳。
+
+## 时间戳存证
+
+- Issue [#12](https://github.com/xingji-studio/OpenXJ380/issues/12)（发布于 2026-08-01T21:48:56Z）Wayback 快照：https://web.archive.org/web/20260801215205/https://github.com/xingji-studio/OpenXJ380/issues/12
+- 官网"完全由我们自主开发"宣称页快照：https://web.archive.org/web/20260801215244/https://www.xingjisoft.com/os/xj380/
+- Issue 发布时正文原文（GitHub API 抓取）：[issue12_as_published.md](./issue12_as_published.md)
+
+以上快照均已验证包含关键内容（对方删除 Issue 或修改官网措辞后，此处证据仍可独立核验）。
