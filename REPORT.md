@@ -8,6 +8,18 @@
 
 ---
 
+## 更新记录（2026-08-02）
+
+本报告正文保持审计时（commit `037617b`）的原貌不改写，被审方此后的整改动作以本节追记，避免报告与现实脱节，也避免以既成结论掩盖对方已经做出的修正。
+
+- 审计发现被提交为 Issue [#12](https://github.com/xingji-studio/OpenXJ380/issues/12)（MikanOS 字体）后，被审方在 24 小时内响应并于 commit [`c6bcfb3`](https://github.com/xingji-studio/OpenXJ380/commit/c6bcfb33e9b3a4341fd73bd30e62759d12552eeb) 作出修改：`THIRD_PARTY_NOTICES.md` 增加 MikanOS hankaku.bin、maple-font、Source Han Sans 三项声明；新增 `font/ttf/LICENSES.md`（两份 OFL-1.1 全文含各自版权行）；删除 `include/efi/efi.h`、`include/efi/fbc.h`、`include/graphics/GOP.hpp` 上的"版权所有©XINGJI Studios…保留所有权利"。**第三节与第四节中"未声明"「被加盖自家版权」的状态就此三项而言已不再成立**，响应速度应予肯定。
+- 在 commit [`4349e4d`](https://github.com/xingji-studio/OpenXJ380/commit/4349e4d546406d11fc4bd0b4bcfa628ad2eef81f) 上复核，整改尚不完整：三项新声明未同步进 `third_party/compliance-manifest.json`（`components` 仍为 16 项），而该 manifest 是 `out/compliance/third-party` 发行合规包的生成源，故**分发物层面的合规状态尚未改变**；MikanOS 的 Apache-2.0 全文未随仓库提供（`licenses/` 下无对应文件，与 §4(a) 不符）；两个派生头文件只删版权行、未补来源归属。
+- 另在同一 commit 上新发现三处未申报材料，已分别提交为 Issue [#23](https://github.com/xingji-studio/OpenXJ380/issues/23)（libwebp 缺 `COPYING`/`PATENTS`/`AUTHORS`）、[#24](https://github.com/xingji-studio/OpenXJ380/issues/24)（`frameworks/StardustUI/fonts/xiaolai.ttf`，小赖字体 SC，OFL-1.1，仓库内零声明）、[#26](https://github.com/xingji-studio/OpenXJ380/issues/26)（`OVMF.fd`，edk2-stable202011 预编译固件，无来源与许可证记录）。
+- 需同时更正报告第四节的一处口径：**BusyBox 的 GPL-2.0 材料是完整的**（`third_party/busybox-source/` 含上游归档、`LICENSE`、`.config`、编译补丁与构建说明，且 `tests/test_license_compliance.py` 有哈希断言），这一项不应被计入合规缺口，报告原文亦未将其列为问题，此处明确记录以免读者误读。
+- 全部 Issue 的发布时原文与 Wayback 第三方时间戳见 [issues/](./issues/)。
+
+---
+
 ## 一、核心结论（TL;DR）
 
 **"全自研"的宣称不成立，但也不是纯粹的空壳骗局。** 事实介于两者之间：
