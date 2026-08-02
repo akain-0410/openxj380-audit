@@ -18,6 +18,16 @@
 - 需同时更正报告第四节的一处口径：**BusyBox 的 GPL-2.0 材料是完整的**（`third_party/busybox-source/` 含上游归档、`LICENSE`、`.config`、编译补丁与构建说明，且 `tests/test_license_compliance.py` 有哈希断言），这一项不应被计入合规缺口，报告原文亦未将其列为问题，此处明确记录以免读者误读。
 - 全部 Issue 的发布时原文与 Wayback 第三方时间戳见 [issues/](./issues/)。
 
+### 追加：分发物层面的独立审计（2026-08-02，另见 [IMAGE_AUDIT.md](./IMAGE_AUDIT.md)）
+
+本报告审的是公开源码仓库。第三方仓库 [xhdndmm/xj380os-full-report](https://github.com/xhdndmm/xj380os-full-report)（"XJ380OS的完整分析+源代码+磁盘镜像"）公开了**官方磁盘镜像 `XJ380.img` 与含 `.git` 的完整源码快照**，使得对**实际分发物**的审计成为可能。已实际下载、解包、逐文件核算，结论另立报告 [IMAGE_AUDIT.md](./IMAGE_AUDIT.md)，要点：
+
+- 镜像内 101 个文件中**没有任何许可证/声明/版权文本**，而其中至少 13 个第三方组件在二进制再分发时负有声明义务；被审方私有树自己的 `THIRD_PARTY_NOTICES.md` 明文写着"binary redistribution must reproduce the upstream notice"。合规打包机制（`tools/package_third_party.py` → 镜像 `/system/licenses`）是开源时才新建的，流通中的镜像早于它。
+- 本报告第三节的 MikanOS 结论在分发物层面同样成立：`hankaku.bin` 的 4096 字节在镜像 `system/kernel.krl` 偏移 0x157000 处逐字节存在。
+- 镜像内 BusyBox 与被审方公布的 GPL 对应源码不是同一个二进制（哈希/体积/构建时间戳三项均不符）。
+- 新发现 GPL-3.0 血统（Uinxed-Kernel、cavOS）与提交 `89ac965f`"No GPL！"的署名删除；但改写经量化核查属实质性重写，如实认定对被审方有利的部分。
+- **更正本报告一处口径**：`include/elf.h` 现已被真正替换为 musl 的 MIT 版本（行级相似度 0.9806，glibc 仅 0.2747），不再是 glibc LGPL 头文件，该项应从合规缺口中划掉；仅 `licenses/glibc-elf-h.txt` 为历史残留。
+
 ---
 
 ## 一、核心结论（TL;DR）

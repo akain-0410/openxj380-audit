@@ -2,7 +2,10 @@
 
 对 [xingji-studio/OpenXJ380](https://github.com/xingji-studio/OpenXJ380)（宣称"完全自主研发"的操作系统）的独立对抗性审计，基于第一性原则，所有结论均可复现。
 
-**完整报告：[REPORT.md](./REPORT.md)**
+**完整报告：**
+
+- **[REPORT.md](./REPORT.md)** —— 对**公开源码仓库**的审计（代码溯源、许可证合规、字节级证据）
+- **[IMAGE_AUDIT.md](./IMAGE_AUDIT.md)** —— 对**官方磁盘镜像 `XJ380.img`（实际分发物）**的审计。镜像与完整源码包（含 `.git`）取自第三方公开仓库 [xhdndmm/xj380os-full-report](https://github.com/xhdndmm/xj380os-full-report)（"XJ380OS的完整分析+源代码+磁盘镜像"），已在报告中标注来源。
 
 ## 核心结论
 
@@ -11,6 +14,14 @@
 - `font/ttf/XJ380F.ttf` 内部元数据为 Adobe **思源黑体**（OFL-1.1），来源未声明。
 - 沙盒实测：公开仓库按其 README **无法完成内核链接**（printk/serial 实现缺失），无法产出系统镜像；bootloader 可在 QEMU 运行。
 - 全部约 170 万行代码于 2026-08-01 单次 "first commit" 提交，无开发历史可查。
+
+### 分发物层面（[IMAGE_AUDIT.md](./IMAGE_AUDIT.md)，2026-08-02 新增）
+
+- **实际下载并解包了官方磁盘镜像 `XJ380.img`（sha256 `14daf0fe…`，128 MiB，GPT+FAT，101 个文件）**：镜像内**没有任何一个许可证、声明或版权文本文件**，而其中至少装着 13 个在二进制再分发时负有声明义务的第三方组件（BusyBox GPL-2.0、两款 OFL 字体、MikanOS hankaku、musl、libgcc、mbedTLS、litehtml、libwebp、lwIP、Mozilla CA 包等）。被审方自己的 `THIRD_PARTY_NOTICES.md` 白纸黑字写明"binary redistribution must reproduce the upstream notice"——**用他们自己的标准衡量他们自己的产物，这份镜像不合格**。
+- **镜像里的 BusyBox 不是被审方公布 GPL 对应源码所对应的那个二进制**：哈希、体积（3,125,520 vs 2,485,536）、构建时间戳（`2020-02-24 14:41:50 +08` vs 空）三项全部不符。
+- **源码考古发现一个名为 `No GPL！` 的提交（`89ac965f`，2026-04-04）**，删除了两个 GPL-3.0 上游（[Uinxed-Kernel](https://github.com/ViudiraTech/Uinxed-Kernel)、[cavOS](https://github.com/malwarepad/cavOS)）的版权署名。**但经量化核查，此次改写是实质性重写而非洗白**（改写后与上游 ≥3 行的连续相同代码块为 0），这一点对被审方有利，报告中如实认定。
+- `mod/e1000.sys` 携带第三方个人版权声明 `Copyright (C) 2025  lihanrui2913`，但仓库内无任何许可授予记录，manifest 亦未列——分发物的许可状态目前无法确定。
+- 如实更正：`include/elf.h` 已被真正替换为 musl 的 MIT 版本（与 musl 相似度 0.9806），不是改标签了事，该项应从缺口中划掉。
 
 审计不否认其真实工程量（约 10 万行第一方整合与子系统代码），审查对象是"完全自主研发"这一公开宣称与许可证合规性。报告附有全部证据的复现步骤，欢迎以证据反驳。
 
