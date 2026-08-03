@@ -36,6 +36,12 @@
 | [#24](https://github.com/xingji-studio/OpenXJ380/issues/24) | `xiaolai.ttf`（小赖字体，OFL-1.1）无任何声明 | 被审方关闭（理由：应在 StardustUI 上游修），文件仍在且 manifest 未登记 | [原文](./issues/issue-24.md) · [快照](https://web.archive.org/web/20260802091632/https://github.com/xingji-studio/OpenXJ380/issues/24) |
 | [#26](https://github.com/xingji-studio/OpenXJ380/issues/26) | `OVMF.fd`（EDK II 预编译固件）无来源与许可证记录 | 未修复 | [原文](./issues/issue-26.md) · [快照](https://web.archive.org/web/20260802091656/https://github.com/xingji-studio/OpenXJ380/issues/26) |
 
+另按被审方自己的建议向其上游子仓库提交 1 条：
+
+| Issue | 主题 | 当前状态 | 存档 |
+|---|---|---|---|
+| [StardustUI#15](https://github.com/xingji-studio/StardustUI/issues/15) | `fonts/xiaolai.ttf`（OFL-1.1）被根 `LICENSE` 的 MIT 声明字面覆盖全仓，且无任何字体声明 | open | [原文](./issues/stardustui-issue-15.md) · [快照](https://web.archive.org/web/20260803112053/https://github.com/xingji-studio/StardustUI/issues/15) |
+
 - 官网"完全由我们自主开发"宣称页快照：https://web.archive.org/web/20260801215244/https://www.xingjisoft.com/os/xj380/
 - #12 发布当时的快照（对方修改前）：https://web.archive.org/web/20260801215205/https://github.com/xingji-studio/OpenXJ380/issues/12
 
