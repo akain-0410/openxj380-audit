@@ -2,6 +2,23 @@
 
 对 [xingji-studio/OpenXJ380](https://github.com/xingji-studio/OpenXJ380)（宣称"完全自主研发"的操作系统）的独立对抗性审计，基于第一性原则，所有结论均可复现。
 
+> ## 状态：审计已结束（2026-08-03）
+>
+> 本仓库不再新增审计内容，转为**只读存档**保留。保留而非撤下的原因是：已提交的 Issue 中引用了这里的存档链接，撤下会使公开记录出现断链；同时本仓库也记录了被审方**已完成整改**这一事实。
+>
+> **结算（逐项在 commit [`ad39a67`](https://github.com/xingji-studio/OpenXJ380/commit/ad39a67) 上实测复核）：**
+>
+> | 议题 | 结果 |
+> |---|---|
+> | [#12](https://github.com/xingji-studio/OpenXJ380/issues/12) MikanOS 字体 | **已实际修复**（manifest 16→21 项、补 Apache-2.0 全文与可脱网验证的 `SOURCE.md`、补派生文件归属），已同意关闭 |
+> | [#23](https://github.com/xingji-studio/OpenXJ380/issues/23) libwebp | 仍开放，未修复；不再催办 |
+> | [#26](https://github.com/xingji-studio/OpenXJ380/issues/26) `OVMF.fd` | 仍开放，未修复；不再催办 |
+> | [#24](https://github.com/xingji-studio/OpenXJ380/issues/24) `xiaolai.ttf` | 被审方关闭并建议移往上游，已照办 → [StardustUI#15](https://github.com/xingji-studio/StardustUI/issues/15)（仍开放） |
+>
+> **需要与读者讲清的一点定性问题：** 本仓库的证据能够支撑的结论是"引用了第三方代码与素材，但声明与许可证义务不合规"，以及"'完全自主研发'的宣称与代码构成不符"。这与"抄袭"是两个不同量级的指控——**本审计从未证明后者，读者也不应据此得出后者**。前者是可以在一天内修完的技术债，被审方对 #12 的处理就是证明。审计过程中我方也两次主动收回自己的结论（`include/elf.h` 实为 musl MIT 版本、"No GPL！"提交经量化核查属实质性重写而非仅删署名），这些对被审方有利的更正与不利结论一并保留在报告中。
+>
+> **关于证据来源的变动：** 提供镜像与完整源码包的第三方仓库 [xhdndmm/xj380os-full-report](https://github.com/xhdndmm/xj380os-full-report) 现已被其作者置为只读，且 Release 中含 `.git` 的 `XJ380.zip` 资产**已被撤下**，因此 [evidence/image/repro.sh](./evidence/image/repro.sh) 的源码包下载步骤现在会失败；镜像 `XJ380.img`（sha256 `14daf0fe…`）仍在该 Release 中，与之相关的结论仍可完整复算。本仓库不转载该源码包，也不公开其中的提交者身份、reflog 或个人路径信息——报告只引用了许可证与血统认定必需的最小信息。
+
 **完整报告：**
 
 - **[REPORT.md](./REPORT.md)** —— 对**公开源码仓库**的审计（代码溯源、许可证合规、字节级证据）
