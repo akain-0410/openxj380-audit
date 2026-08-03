@@ -56,3 +56,19 @@ find user/browser/third_party/libwebp \
 
 参照标准：BusyBox 那边的材料是完整的（[`third_party/busybox-source/`](https://github.com/xingji-studio/OpenXJ380/tree/4349e4d/third_party/busybox-source) 有上游归档、`LICENSE`、`.config`、编译补丁、`BUILDING.md`，测试里还有哈希断言）。按同一标准处理 libwebp 即可。
 
+
+---
+
+### 状态更新（抓取时间 2026-08-03T11:08:50Z）
+
+- 当前状态：**open**
+- 最后更新：2026-08-02T10:36:09Z
+- 评论数：1
+
+#### 全部评论原文
+
+---
+
+**Rainy101112** @ 2026-08-02T10:36:09Z
+
+感谢你的Issue，我们已了解并将尽快处理。处理完成后将会提醒你。

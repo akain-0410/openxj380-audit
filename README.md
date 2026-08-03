@@ -29,16 +29,20 @@
 
 已向该仓库提交 4 条 Issue，全部保留发布时原文与第三方时间戳：**[issues/](./issues/)（存档索引）**
 
-| Issue | 主题 | 存档 |
-|---|---|---|
-| [#12](https://github.com/xingji-studio/OpenXJ380/issues/12) | MikanOS 字体逐字节一致、未声明且被标注"保留所有权利" | [原文+评论](./issues/issue-12.md) · [快照](https://web.archive.org/web/20260802091552/https://github.com/xingji-studio/OpenXJ380/issues/12) |
-| [#23](https://github.com/xingji-studio/OpenXJ380/issues/23) | libwebp 缺 `COPYING`/`PATENTS`/`AUTHORS` | [原文](./issues/issue-23.md) · [快照](https://web.archive.org/web/20260802091612/https://github.com/xingji-studio/OpenXJ380/issues/23) |
-| [#24](https://github.com/xingji-studio/OpenXJ380/issues/24) | `xiaolai.ttf`（小赖字体，OFL-1.1）无任何声明 | [原文](./issues/issue-24.md) · [快照](https://web.archive.org/web/20260802091632/https://github.com/xingji-studio/OpenXJ380/issues/24) |
-| [#26](https://github.com/xingji-studio/OpenXJ380/issues/26) | `OVMF.fd`（EDK II 预编译固件）无来源与许可证记录 | [原文](./issues/issue-26.md) · [快照](https://web.archive.org/web/20260802091656/https://github.com/xingji-studio/OpenXJ380/issues/26) |
+| Issue | 主题 | 当前状态（2026-08-03 复核） | 存档 |
+|---|---|---|---|
+| [#12](https://github.com/xingji-studio/OpenXJ380/issues/12) | MikanOS 字体逐字节一致、未声明且被标注"保留所有权利" | **已实际修复**，已同意关闭 | [原文+评论](./issues/issue-12.md) · [快照](https://web.archive.org/web/20260802091552/https://github.com/xingji-studio/OpenXJ380/issues/12) |
+| [#23](https://github.com/xingji-studio/OpenXJ380/issues/23) | libwebp 缺 `COPYING`/`PATENTS`/`AUTHORS` | 未修复 | [原文](./issues/issue-23.md) · [快照](https://web.archive.org/web/20260802091612/https://github.com/xingji-studio/OpenXJ380/issues/23) |
+| [#24](https://github.com/xingji-studio/OpenXJ380/issues/24) | `xiaolai.ttf`（小赖字体，OFL-1.1）无任何声明 | 被审方关闭（理由：应在 StardustUI 上游修），文件仍在且 manifest 未登记 | [原文](./issues/issue-24.md) · [快照](https://web.archive.org/web/20260802091632/https://github.com/xingji-studio/OpenXJ380/issues/24) |
+| [#26](https://github.com/xingji-studio/OpenXJ380/issues/26) | `OVMF.fd`（EDK II 预编译固件）无来源与许可证记录 | 未修复 | [原文](./issues/issue-26.md) · [快照](https://web.archive.org/web/20260802091656/https://github.com/xingji-studio/OpenXJ380/issues/26) |
 
 - 官网"完全由我们自主开发"宣称页快照：https://web.archive.org/web/20260801215244/https://www.xingjisoft.com/os/xj380/
 - #12 发布当时的快照（对方修改前）：https://web.archive.org/web/20260801215205/https://github.com/xingji-studio/OpenXJ380/issues/12
 
 ## 被审方的响应（如实记录）
 
-2026-08-02，对方在 #12 下回复并于 commit [`c6bcfb3`](https://github.com/xingji-studio/OpenXJ380/commit/c6bcfb33e9b3a4341fd73bd30e62759d12552eeb) 补充了 MikanOS 与两个字体的声明、删除了派生文件上不准确的版权行——响应在 24 小时内完成，这一点应予承认。经复核，该修改尚未同步到机器可读的 `compliance-manifest.json`（发行合规包由它生成），MikanOS 的 Apache-2.0 全文也未随仓库提供，因此分发物层面的合规状态暂未改变；详见 [issues/README.md](./issues/README.md)。本存档会随后续进展更新，包括他们完成整改的记录。
+2026-08-02，对方在 #12 下回复并于 commit [`c6bcfb3`](https://github.com/xingji-studio/OpenXJ380/commit/c6bcfb33e9b3a4341fd73bd30e62759d12552eeb) 补充了 MikanOS 与两个字体的声明、删除了派生文件上不准确的版权行——响应在 24 小时内完成，这一点应予承认。当时复核指出三项残留（manifest 未同步、Apache-2.0 全文缺失、派生文件无归属注释）。
+
+**2026-08-03 在 commit [`ad39a67`](https://github.com/xingji-studio/OpenXJ380/commit/ad39a67) 上再次实测复核：#12 的三项残留已全部真实闭合**——`compliance-manifest.json` 从 16 项补到 21 项（且所有 `license_files` 路径存在）、新增 `licenses/mikanos.txt` 与 `third_party/mikanos-hankaku/`（含上游 commit 与哈希的 `SOURCE.md`，可脱网验证）、`fbc.h` 与 `GOP.hpp` 补上了 MikanOS 来源归属，另额外补了 talc、libutf 条目并将 `licenses/glibc-elf-h.txt` 换为 `musllibc-elf-h.txt`。这是实质性、可验证的整改，已同意关闭 #12。
+
+同一时点的其余三条仍有缺口：#23（libwebp）与 #26（`OVMF.fd`）在仓库内无任何变化；#24 被对方以"应在 StardustUI 库修改"为由关闭——上游当修这一点成立，但 OpenXJ380 自身仍分发着同一个 25 MB 的 OFL 字体，而其 manifest 已有 `RapidJSON`（同样位于 StardustUI 内）的登记先例，口径不一致。逐项复核命令与证据见 [issues/README.md](./issues/README.md)。

@@ -18,6 +18,13 @@
 - 需同时更正报告第四节的一处口径：**BusyBox 的 GPL-2.0 材料是完整的**（`third_party/busybox-source/` 含上游归档、`LICENSE`、`.config`、编译补丁与构建说明，且 `tests/test_license_compliance.py` 有哈希断言），这一项不应被计入合规缺口，报告原文亦未将其列为问题，此处明确记录以免读者误读。
 - 全部 Issue 的发布时原文与 Wayback 第三方时间戳见 [issues/](./issues/)。
 
+### 再次复核（2026-08-03，公开仓库 commit [`ad39a67`](https://github.com/xingji-studio/OpenXJ380/commit/ad39a67)）
+
+- **上一条列出的三项残留已全部真实闭合**（逐项实测，不采信回复中的说法）：`compliance-manifest.json` 的 `components` 从 16 项补到 **21 项**，MikanOS hankaku、maple-font、Source Han Sans 均已登记，且脚本遍历校验全部 `license_files` 路径**无一缺失**；新增 `licenses/mikanos.txt`（Apache-2.0 全文 200 行）与 `third_party/mikanos-hankaku/{LICENSE,SOURCE.md,hankaku.txt}`，其中 `SOURCE.md` 记录了上游 commit `b5f7740c`、源文件路径与哈希，使 `font/hankaku.bin` **可脱网独立验证**（`sha256 317e04a7…` 与记录一致）——这比原 Issue 要求的做法更完整；`include/efi/fbc.h` 与 `include/graphics/GOP.hpp` 首行均已补 `// Portions derived from MikanOS (…), Apache-2.0.`。另额外补入 `talc allocator`、`libutf` 条目，并把 `licenses/glibc-elf-h.txt` 换成 `musllibc-elf-h.txt`（与上条第 29 行的更正一致）。**就 MikanOS 一项而言，本报告第三节的合规结论已由被审方的整改解决，仅历史事实部分（该字体确非自研）保持不变。**
+- 唯一残留是一个不影响关闭的记录性偏差：`third_party/mikanos-hankaku/SOURCE.md` 记录的 `hankaku.txt`/`LICENSE` 哈希是**上游真值**（已从 `b5f7740c` 拉取复算吻合），而入库副本的行尾换行符少了一个字节（38776→38775、11357→11356），除此一字节外逐字节相同；`tests/test_license_compliance.py::test_mikanos_hankaku_source_material_is_complete` 只断言文件存在与 manifest 字段、不校验这两个哈希，故该偏差是静默的。
+- #23（libwebp）与 #26（`OVMF.fd`）在该 commit 上**仍无任何变化**：`user/browser/third_party/libwebp/` 下只有 `src`，无 `COPYING`/`PATENTS`/`AUTHORS`，manifest 条目仍指向 `types.h`；`OVMF.fd` 在 manifest 与 `THIRD_PARTY_NOTICES.md` 中仍为 0 次提及。
+- #24 被审方主动关闭，理由为"应该在 StardustUI 库进行修改"。**该理由部分成立**——StardustUI 确为独立仓库（`.gitmodules` 可证），上游当修。但 OpenXJ380 的工作树里仍实际分发着同一个 25 MB 字体（`frameworks/StardustUI/fonts/xiaolai.ttf`，`sha256 69f8f50a…`），而其 manifest 已有 `RapidJSON`（`license_files` 指向 `frameworks/StardustUI/includes/rapidjson/rapidjson.h`）这一"StardustUI 内第三方资产照样登记"的先例，同类资产两种口径。顺该线索复核 StardustUI 仓库另发现一处更严重问题：其根 `LICENSE` 为 `MIT License / Copyright (c) 2026 XINGJI Studios` 且字面覆盖全仓，而仓内即放着该 OFL-1.1 字体、无任何范围排除说明（`README.md` 检索 `font`/`licen`/`OFL` 均无命中）——OFL 字体不可被重新许可为 MIT。此项已按对方建议移往 StardustUI 仓库跟进。
+
 ### 追加：分发物层面的独立审计（2026-08-02，另见 [IMAGE_AUDIT.md](./IMAGE_AUDIT.md)）
 
 本报告审的是公开源码仓库。第三方仓库 [xhdndmm/xj380os-full-report](https://github.com/xhdndmm/xj380os-full-report)（"XJ380OS的完整分析+源代码+磁盘镜像"）公开了**官方磁盘镜像 `XJ380.img` 与含 `.git` 的完整源码快照**，使得对**实际分发物**的审计成为可能。已实际下载、解包、逐文件核算，结论另立报告 [IMAGE_AUDIT.md](./IMAGE_AUDIT.md)，要点：
