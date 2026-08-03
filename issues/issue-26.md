@@ -47,3 +47,19 @@ grep -rIn -i 'ovmf\|edk2\|tianocore' --include='*.md' --include='*.json' . | gre
 1. **保留二进制**：新建 `third_party/ovmf/`，放入 `SOURCE.md`（上游发行版、版本、下载 URL、SHA-256）与 EDK II 的 `License.txt`，并在 `THIRD_PARTY_NOTICES.md` 与 `compliance-manifest.json` 各增一条；
 2. **移除二进制**：从仓库删除 `OVMF.fd`，README 改为使用发行版自带的固件（Ubuntu 安装 `ovmf` 包后为 `/usr/share/OVMF/OVMF_CODE.fd`）。实测该路径可满足本项目的 QEMU 启动需求，同时能让仓库少 4 MiB 且不再需要维护固件的合规材料。
 
+
+---
+
+### 状态更新（抓取时间 2026-08-03T11:08:50Z）
+
+- 当前状态：**open**
+- 最后更新：2026-08-02T10:45:43Z
+- 评论数：1
+
+#### 全部评论原文
+
+---
+
+**Rainy101112** @ 2026-08-02T10:45:43Z
+
+感谢你的Issue，我们已了解此问题，会尽快解决。
