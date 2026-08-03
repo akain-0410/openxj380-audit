@@ -1,6 +1,6 @@
 # 议题存档索引
 
-本目录保存向 [xingji-studio/OpenXJ380](https://github.com/xingji-studio/OpenXJ380) 提交的全部 Issue 的**发布时原文**（GitHub API 抓取，含抓取时刻的全部评论），以及第三方时间戳快照链接。
+本目录保存向 [xingji-studio/OpenXJ380](https://github.com/xingji-studio/OpenXJ380) 及其上游子仓库 [xingji-studio/StardustUI](https://github.com/xingji-studio/StardustUI) 提交的全部 Issue 的**发布时原文**（GitHub API 抓取，含抓取时刻的全部评论），以及第三方时间戳快照链接。
 
 为什么要做双重存档：Issue 的正文可被作者与仓库管理员编辑、Issue 本身可被删除或锁定。本目录的文件由 Git 提交时间戳背书（谁都能核对提交历史），Wayback Machine 快照则提供不受任何一方控制的第三方时间戳，两者互相独立。
 
@@ -12,6 +12,14 @@
 | [#26](https://github.com/xingji-studio/OpenXJ380/issues/26) | 根目录 `OVMF.fd`（edk2-stable202011 预编译固件）无来源/版本/许可证记录 | 2026-08-02 09:12:47 | open（未修复） | [issue-26.md](./issue-26.md) | [快照](https://web.archive.org/web/20260802091656/https://github.com/xingji-studio/OpenXJ380/issues/26) |
 
 首次存档抓取时间：2026-08-02 09:14 UTC（当时四条均为 open）。各 `issue-*.md` 末尾附有 **2026-08-03 的状态更新与全部评论原文**。
+
+### 上游子仓库 StardustUI
+
+| Issue | 主题 | 发布时间（UTC） | 当前状态 | 存档原文 | Wayback 快照 |
+|---|---|---|---|---|---|
+| [StardustUI#15](https://github.com/xingji-studio/StardustUI/issues/15) | `fonts/xiaolai.ttf` 为 OFL-1.1 的「小赖字体 SC」，但仓库 `LICENSE` 以 MIT 覆盖全仓且无任何字体声明 | 2026-08-03 11:10:41 | open | [stardustui-issue-15.md](./stardustui-issue-15.md) | [快照](https://web.archive.org/web/20260803112053/https://github.com/xingji-studio/StardustUI/issues/15) · [LICENSE](https://web.archive.org/web/20260803110951/https://github.com/xingji-studio/StardustUI/blob/main/LICENSE) · [fonts/](https://web.archive.org/web/20260803111301/https://github.com/xingji-studio/StardustUI/tree/main/fonts) |
+
+这一条是 OpenXJ380 #24 被关闭后、**按被审方自己的建议**（"你可以考虑移步 https://github.com/xingji-studio/StardustUI "）提到上游的，并在那边追加了一个比原 #24 更严重的发现：根 `LICENSE` 的 MIT 声明字面覆盖全仓，而仓内就放着该 OFL-1.1 字体（OFL 字体不可被重新许可为 MIT）。
 
 仓库根目录的 `ISSUE.md` 与 `issue12_as_published.md` 是 #12 的早期存档（不含后续评论），保留不动；[issues/issue-12.md](./issue-12.md) 是含完整评论的版本。
 
@@ -45,7 +53,7 @@
 1. OpenXJ380 的工作树里**实际分发着同一个 25 MB 字体**（`frameworks/StardustUI/fonts/xiaolai.ttf`，sha256 `69f8f50a9a3696357b50b4c5d7d17efecb17a23c7a818ff917c21169f15555f9`）；
 2. 其 manifest 里已有 **`RapidJSON` 这个先例**——`license_files` 指向 `frameworks/StardustUI/includes/rapidjson/rapidjson.h`，即"StardustUI 内的第三方资产"照样会在 OpenXJ380 的 manifest 中登记。同一类资产两种口径。
 
-另外，顺着对方指的路径查下去，在 StardustUI 仓库发现一个比原 #24 更严重的问题：该仓库的根 `LICENSE` 是 `MIT License / Copyright (c) 2026 XINGJI Studios`，**字面覆盖全仓**，而仓里就放着这个 OFL-1.1 字体（`fonts/xiaolai.ttf`）且无任何例外说明（`README.md` 内检索 `font`/`licen`/`OFL` 均无命中）。OFL 字体不能被重新许可为 MIT。快照：[StardustUI LICENSE](https://web.archive.org/web/20260803110951/https://github.com/xingji-studio/StardustUI/blob/main/LICENSE) · [fonts/](https://web.archive.org/web/20260803111301/https://github.com/xingji-studio/StardustUI/tree/main/fonts)。此事已按对方建议移往 StardustUI 仓库跟进。
+另外，顺着对方指的路径查下去，在 StardustUI 仓库发现一个比原 #24 更严重的问题：该仓库的根 `LICENSE` 是 `MIT License / Copyright (c) 2026 XINGJI Studios`，**字面覆盖全仓**，而仓里就放着这个 OFL-1.1 字体（`fonts/xiaolai.ttf`）且无任何例外说明（`README.md` 内检索 `font`/`licen`/`OFL` 均无命中）。OFL 字体不能被重新许可为 MIT。快照：[StardustUI LICENSE](https://web.archive.org/web/20260803110951/https://github.com/xingji-studio/StardustUI/blob/main/LICENSE) · [fonts/](https://web.archive.org/web/20260803111301/https://github.com/xingji-studio/StardustUI/tree/main/fonts)。此事已按对方建议移往 StardustUI 仓库跟进，见 [StardustUI#15](https://github.com/xingji-studio/StardustUI/issues/15)（存档：[stardustui-issue-15.md](./stardustui-issue-15.md)）。
 
 ---
 
